@@ -3,13 +3,15 @@
 This program reads a small support-ticket data file and prints a summary.
 The project intentionally needs some release-readiness improvements.
 """
-
+import json
 from tabulate import tabulate
 
-DATA_FILE = "tickets.txt"
-REPORT_TITLE = "Support Ticket Summary"
-HIGH_PRIORITY_THRESHOLD = 4
+CONFIG_FILE = "config.json"
 
+def load_config(filename):
+    """Load project configuration from a JSON file."""
+    with open(filename, encoding="utf-8") as file:
+        return json.load(file)
 
 def load_tickets(filename):
     """Load support tickets from a pipe-delimited text file."""
@@ -86,11 +88,12 @@ def display_tickets(tickets):
 
 def main():
     """Run the support-ticket report."""
-    tickets = load_tickets(DATA_FILE)
-    summary = build_summary(tickets, HIGH_PRIORITY_THRESHOLD)
+    config = load_config(CONFIG_FILE)
+    tickets = load_tickets(config["data_file"])
+    summary = build_summary(tickets, config["high_priority_threshold"])
 
-    print(REPORT_TITLE)
-    print("-" * len(REPORT_TITLE))
+    print(config["report_title"])
+    print("-" * len(config["report_title"]))
     display_tickets(tickets)
     print()
     print(f"Total tickets: {summary['total']}")

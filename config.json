@@ -1,0 +1,5 @@
+{
+  "data_file": "tickets.txt",
+  "report_title": "Support Ticket Summary",
+  "high_priority_threshold": 4
+}
