@@ -39,8 +39,13 @@ def load_tickets(filename):
 
 def count_open_tickets(tickets):
     """Return the number of tickets whose status is open."""
-    # Starter defect: this currently counts every ticket.
-    return len(tickets)
+    count = 0
+
+    for ticket in tickets:
+        if ticket["status"] == "open":
+            count += 1
+
+    return count
 
 
 def count_high_priority_tickets(tickets, threshold):
