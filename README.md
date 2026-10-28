@@ -11,15 +11,17 @@ Small Python program for displaying support-ticket information.
 ### Windows
 Run the following in a powershell terminal.
 1. git clone https://github.com/smithK01/CPS310-ICA08-DevOps.git in the folder you want the repository to reside.
-2. python -m venv .venv
-3. .\venv\Scripts\Activate.ps1
-4. python -m pip install -r requirements.txt
+2. cd CPS310-ICA08-DevOps
+3. python -m venv .venv
+4. .\.venv\Scripts\Activate.ps1
+5. python -m pip install -r requirements.txt
 ### MacOS
 Run the following in a shell terminal.
 1. git clone https://github.com/smithK01/CPS310-ICA08-DevOps.git in the folder you want the repository to reside.
-2. python -m venv .venv
-3. .\venv\Scripts\Activate.ps1
-4. python -m pip install -r requirements.txt
+2. cd CPS310-ICA08-DevOps
+3. python3 -m venv .venv
+3. source .venv\bin\activate
+4. python3 -m pip install -r requirements.txt
 
 ## Run
 
@@ -101,4 +103,5 @@ Checking Git status...
 ## Release-Readiness
 - Dependencies are clearly stated in [requirements.txt](requirements.txt)
 - Configuration settings have been moved from the main program into [config.json](config.json)
-- This README.md clearly outlines how to set up, and run this program and it's tests.
+- This README.md clearly outlines how to set up, and run this program and its tests.
+- All tests in [test_release_audit](test_release_audit.py) pass.
