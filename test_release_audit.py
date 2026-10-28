@@ -5,8 +5,35 @@ from release_audit import (
     count_high_priority_tickets,
     count_open_tickets,
     load_tickets,
+    load_config,
 )
 
+def test_load_config_reads_json(tmp_path):
+    # Arrange
+    config_file = tmp_path / "config.json"
+
+    config_file.write_text(
+        """
+        {
+          "data_file": "tickets.txt",
+          "report_title": "Support Ticket Summary",
+          "high_priority_threshold": 4
+        }
+        """,
+        encoding="utf-8"
+    )
+
+    expected = {
+        "data_file": "tickets.txt",
+        "report_title": "Support Ticket Summary",
+        "high_priority_threshold": 4
+    }
+
+    # Act
+    result = load_config(config_file)
+
+    # Assert
+    assert result == expected
 
 def test_count_open_tickets_counts_only_open_status():
     # Arrange
